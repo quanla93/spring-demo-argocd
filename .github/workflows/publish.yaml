@@ -10,7 +10,7 @@ jobs:
         with:
           registry: ghcr.io
           username: quanla93
-          password: Quanbao93
+          password: Quanbao932001
       - name: Build the spring-dem-argocd-docker Docker image
         run: |
           docker build . --tag ghcr.io/quanla93/spring-demo-argocd:latest
