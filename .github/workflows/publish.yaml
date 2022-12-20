@@ -1,0 +1,17 @@
+name: publish
+on: [push]
+jobs:
+  publish-hello-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: quanla93
+          password: ${{ secrets.GHCR_TOKEN }}
+      - name: Build the spring-dem-argocd-docker Docker image
+        run: |
+          docker build . --tag ghcr.io/quanla93/spring-demo-argocd:latest
+          docker push ghcr.io/quanla93/spring-demo-argocd:latest
